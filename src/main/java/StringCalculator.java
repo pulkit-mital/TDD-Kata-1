@@ -1,9 +1,9 @@
 public class StringCalculator {
     public int Add(String numbers) {
-        if(numbers == null || numbers.isEmpty()) {
+        if (numbers == null || numbers.isEmpty()) {
             return 0;
-        }else{
-            return StringUtils.convertStringToInteger(numbers);
+        } else {
+            return Calculator.sum(StringUtils.splitAndGetListOfIntegerNumbers(numbers, ","));
         }
     }
 }
