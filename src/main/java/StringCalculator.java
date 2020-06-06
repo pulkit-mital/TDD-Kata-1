@@ -3,7 +3,7 @@ public class StringCalculator {
         if (numbers == null || numbers.isEmpty()) {
             return 0;
         } else {
-            return Calculator.sum(StringUtils.splitAndGetListOfIntegerNumbers(numbers, ","));
+            return Calculator.sum(StringUtils.splitAndGetListOfIntegerNumbers(numbers, ",|\n"));
         }
     }
 }
