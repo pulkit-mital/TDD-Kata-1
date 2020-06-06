@@ -25,9 +25,9 @@ public class StringUtils {
         if(numbers.startsWith("//")) {
             Matcher matcher = Pattern.compile("//(.*)\n(.*)").matcher(numbers);
             matcher.matches();
-            String customDelimiter = matcher.group(1) + "|\n";
+            String customDelimiter = matcher.group(1);
             String numbersList = matcher.group(2);
-            return getListOfNumbers(numbersList, customDelimiter);
+            return getListOfNumbers(numbersList, Pattern.quote(customDelimiter)+"|\n");
         }else{
             return getListOfNumbers(numbers,",|\n");
         }

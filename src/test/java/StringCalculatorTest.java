@@ -39,4 +39,10 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(3, stringCalculator.Add("//;\n1;2"));
     }
+
+    @Test
+    public void customDelimiterCouldBeAlsoARegExpSpecialChar(){
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.Add("//.\n1.2"));
+    }
 }
