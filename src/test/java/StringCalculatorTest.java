@@ -33,4 +33,10 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(6, stringCalculator.Add("1\n2,3"));
     }
+
+    @Test
+    public void shouldAcceptCustomDelimiterSyntax(){
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.Add("//;\n1;2"));
+    }
 }

@@ -6,4 +6,10 @@ public class StringCalculator {
             return Calculator.sum(StringUtils.splitAndGetListOfIntegerNumbers(numbers, ",|\n"));
         }
     }
+
+    public static void main(String[] args){
+        StringCalculator stringCalculator = new StringCalculator();
+        System.out.println(stringCalculator.Add("//;\n1;2"));
+
+    }
 }
