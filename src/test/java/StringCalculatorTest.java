@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class StringCalculatorTest {
 
@@ -44,5 +45,27 @@ public class StringCalculatorTest {
     public void customDelimiterCouldBeAlsoARegExpSpecialChar(){
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(3, stringCalculator.Add("//.\n1.2"));
+    }
+
+    @Test
+    public void shouldRaiseExceptionOnNegative(){
+        try{
+            StringCalculator stringCalculator = new StringCalculator();
+            stringCalculator.Add("-1,2,3");
+            fail("Exception Expected");
+        }catch (RuntimeException ex){
+            //throws runtime exception
+        }
+    }
+
+    @Test
+    public void exceptionMessageShouldContainNegatives(){
+        try{
+            StringCalculator stringCalculator = new StringCalculator();
+            stringCalculator.Add("-1,2,3");
+            fail("Exception Expected");
+        }catch (RuntimeException ex){
+            assertEquals("Negatives not allowed: -1", ex.getMessage());
+        }
     }
 }
