@@ -7,9 +7,4 @@ public class StringCalculator {
         }
     }
 
-    public static void main(String[] args){
-        StringCalculator stringCalculator = new StringCalculator();
-        System.out.println(stringCalculator.Add("//;\n1;2"));
-
-    }
 }
