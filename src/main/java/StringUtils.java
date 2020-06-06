@@ -18,7 +18,7 @@ public class StringUtils {
         for (int i = 0; i < numberList.length; i++) {
             integerNumbers[i] = convertStringToInteger(numberList[i]);
         }
-        return integerNumbers;
+        return Arrays.stream(integerNumbers).filter(x -> x < 1000).toArray();
     }
 
     public static String[] splitUsingCustomDelimiterOrByCommaAndNewLine(String numbers) {

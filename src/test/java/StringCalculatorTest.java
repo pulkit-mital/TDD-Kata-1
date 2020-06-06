@@ -68,4 +68,10 @@ public class StringCalculatorTest {
             assertEquals("Negatives not allowed: -1", ex.getMessage());
         }
     }
+
+    @Test
+    public void addNumbersIgonreNumbergreaterThan1000(){
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(2, stringCalculator.Add("2,1001"));
+    }
 }
