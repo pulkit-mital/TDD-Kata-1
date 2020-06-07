@@ -74,4 +74,22 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(2, stringCalculator.Add("2,1001"));
     }
+
+    @Test
+    public void customDelimiteswithAnyLength(){
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.Add("//[***]\n1***2"));
+    }
+
+    @Test
+    public void customMultipleDelimiter(){
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(6, stringCalculator.Add("//[*][$]\n1*2$3"));
+    }
+
+    @Test
+    public void customMultipleDelimiterOfMultipleLength(){
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(6, stringCalculator.Add("//[***][$$$]\n1***2$$$3"));
+    }
 }

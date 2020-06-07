@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringUtils {
 
@@ -24,7 +25,11 @@ public class StringUtils {
     public static String[] splitUsingCustomDelimiterOrByCommaAndNewLine(String numbers) {
         if (numbers == null || numbers.isEmpty()) {
             return new String[0];
-        }else if (numbers.startsWith("//")) {
+        } else if (numbers.startsWith("//[")) {
+            String[] delimiters = numbers.substring(numbers.indexOf("[") + 1, numbers.lastIndexOf("]")).split("]\\[");
+            String restOfNumbers = numbers.substring(numbers.indexOf("\n") + 1, numbers.length());
+            return getListOfNumbers(restOfNumbers, (createRegexFromDelimiters(delimiters)));
+        } else if (numbers.startsWith("//")) {
             Matcher matcher = Pattern.compile("//(.*)\n(.*)").matcher(numbers);
             matcher.matches();
             String customDelimiter = matcher.group(1);
@@ -40,6 +45,10 @@ public class StringUtils {
         if (negativeNumbers.length > 0) {
             throw new RuntimeException("Negatives not allowed: -1");
         }
+    }
+
+    private static String createRegexFromDelimiters(String[] delimiters) {
+        return Arrays.stream(delimiters).map(Pattern::quote).collect(Collectors.joining("|"));
     }
 
 
